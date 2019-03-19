@@ -9,7 +9,7 @@
 Summary: %{vendor_name} %{driver_name} device drivers
 Name: %{vendor_label}-%{driver_name}
 Version: 1.5.5
-Release: 1
+Release: 1%{?dist}
 License: GPL
 Source: https://code.citrite.net/rest/archive/latest/projects/XS/repos/driver-%{name}/archive?at=%{version}&format=tgz&prefix=driver-%{name}-%{version}#/%{name}-%{version}.tar.gz
 
@@ -24,7 +24,7 @@ Requires(postun): /usr/sbin/depmod
 version %{kernel_version}.
 
 %prep
-%autosetup -p1 -n driver-%{name}-%{version} -n driver-broadcom-bnxt-en-1.5.5
+%autosetup -p1 -n driver-%{name}-%{version}
 
 %build
 %{?cov_wrap} %{__make} KVER=%{kernel_version}
