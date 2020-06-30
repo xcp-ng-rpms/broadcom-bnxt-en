@@ -6,16 +6,23 @@
 %define module_dir updates
 %endif
 
+## kernel_version will be set during build because then kernel-devel
+## package installs an RPM macro which sets it. This check keeps
+## rpmlint happy.
+%if %undefined kernel_version
+%define kernel_version dummy
+%endif
+
 Summary: %{vendor_name} %{driver_name} device drivers
 Name: %{vendor_label}-%{driver_name}
-Version: 1.10.0
+Version: 1.10.0_216.0.119.1
 Release: 1%{?dist}
 License: GPL
 
-Source0: https://code.citrite.net/rest/archive/latest/projects/XS/repos/driver-broadcom-bnxt-en/archive?at=1.10.0&format=tgz&prefix=driver-broadcom-bnxt-en-1.10.0#/broadcom-bnxt-en-1.10.0.tar.gz
+Source0: https://code.citrite.net/rest/archive/latest/projects/XS/repos/driver-broadcom-bnxt-en/archive?at=1.10.0_216.0.119.1&format=tgz&prefix=driver-broadcom-bnxt-en-1.10.0_216.0.119.1#/broadcom-bnxt-en-1.10.0_216.0.119.1.tar.gz
 
 
-Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XS/repos/driver-broadcom-bnxt-en/archive?at=1.10.0&format=tgz&prefix=driver-broadcom-bnxt-en-1.10.0#/broadcom-bnxt-en-1.10.0.tar.gz) = de256024042fab2737cd4d687689266e76d7329c
+Provides: gitsha(https://code.citrite.net/rest/archive/latest/projects/XS/repos/driver-broadcom-bnxt-en/archive?at=1.10.0_216.0.119.1&format=tgz&prefix=driver-broadcom-bnxt-en-1.10.0_216.0.119.1#/broadcom-bnxt-en-1.10.0_216.0.119.1.tar.gz) = 6062a8fb465543a6dda689f50ed0b04363b5c064
 
 
 BuildRequires: kernel-devel
@@ -55,5 +62,8 @@ find %{buildroot}/lib/modules/%{kernel_version} -name "*.ko" -type f | xargs chm
 /lib/modules/%{kernel_version}/*/*.ko
 
 %changelog
+* Wed May 20 2020 Tim Smith <tim.smith@citrix.com> - 1.10.0_216.0.119.1-1
+- CP-32954 Update broadcom-bnxt-en driver to 1.10.0_216.0.119.1-1
+
 * Tue Jan 22 2019 Deli Zhang <deli.zhang@citrix.com> - 1.10.0-1
 - CP-30070: Upgrade broadcom-bnxt-en driver to version 1.10.0
