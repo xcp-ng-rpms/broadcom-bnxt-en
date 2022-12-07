@@ -1,8 +1,8 @@
-%global package_speccommit 994f7ace1eed488009a1a01f0b94aaee41dbb6bf
-%global usver 1.10.0_216.0.119.1
-%global xsver 3
+%global package_speccommit 27ec61eaf7efe86c0c53ba4733dad572401bf424
+%global usver 1.10.1_216.1.123.0
+%global xsver 1
 %global xsrel %{xsver}%{?xscount}%{?xshash}
-%global package_srccommit 1.10.0_216.0.119.1
+%global package_srccommit 1.10.1_216.1.123.0
 %define vendor_name Broadcom
 %define vendor_label broadcom
 %define driver_name bnxt-en
@@ -20,10 +20,10 @@
 
 Summary: %{vendor_name} %{driver_name} device drivers
 Name: %{vendor_label}-%{driver_name}
-Version: 1.10.0_216.0.119.1
+Version: 1.10.1_216.1.123.0
 Release: %{?xsrel}%{?dist}
 License: GPL
-Source0: broadcom-bnxt-en-1.10.0_216.0.119.1.tar.gz
+Source0: broadcom-bnxt-en-1.10.1_216.1.123.0.tar.gz
 
 BuildRequires: gcc
 BuildRequires: kernel-devel
@@ -69,6 +69,9 @@ find %{buildroot}/lib/modules/%{kernel_version} -name "*.ko" -type f | xargs chm
 %{?_cov_results_package}
 
 %changelog
+* Wed Aug 24 2022 Zhuangxuan Fei <zhuangxuan.fei@citrix.com> - 1.10.1_216.1.123.0-1
+- CP-40163: Update broadcom-bnxt-en driver to version 1.10.1_216.1.123.0-1
+
 * Mon Feb 14 2022 Ross Lagerwall <ross.lagerwall@citrix.com> - 1.10.0_216.0.119.1-3
 - CP-38416: Enable static analysis
 
