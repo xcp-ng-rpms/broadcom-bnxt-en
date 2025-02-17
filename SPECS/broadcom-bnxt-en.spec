@@ -1,6 +1,6 @@
-%global package_speccommit d871776b42afff1538ca6ae4c0e63b94f6146deb
+%global package_speccommit 6d87d73326a77175defc8bf1deeb5cf036bbd493
 %global usver 1.10.2_223.0.183.0
-%global xsver 1
+%global xsver 2
 %global xsrel %{xsver}%{?xscount}%{?xshash}
 %global package_srccommit 1.10.2_223.0.183.0
 %define vendor_name Broadcom
@@ -24,6 +24,7 @@ Version: 1.10.2_223.0.183.0
 Release: %{?xsrel}%{?dist}
 License: GPL
 Source0: broadcom-bnxt-en-1.10.2_223.0.183.0.tar.gz
+Patch0: Fix-GSO-type-for-HW-GRO-packets-on-5750X-chips.patch
 
 BuildRequires: kernel-devel
 %{?_cov_buildrequires}
@@ -68,6 +69,9 @@ find %{buildroot}/lib/modules/%{kernel_version} -name "*.ko" -type f | xargs chm
 %{?_cov_results_package}
 
 %changelog
+* Fri Dec 06 2024 Alex Brett <alex.brett@cloud.com> - 1.10.2_223.0.183.0-2
+- CA-401596: Backport patch to fix GSO type for HW GRO packets on 5750X chips
+
 * Thu Jun 29 2023 Stephen Cheng <stephen.cheng@citrix.com> - 1.10.2_223.0.183.0-1
 - CP-43650: Update broadcom-bnxt-en driver to version 1.10.2_223.0.183.0
 
