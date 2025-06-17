@@ -1,8 +1,8 @@
-%global package_speccommit 6d87d73326a77175defc8bf1deeb5cf036bbd493
-%global usver 1.10.2_223.0.183.0
-%global xsver 2
+%global package_speccommit 725c6b5ed804e46a4df8913102d63c611647030b
+%global usver 1.10.3_232.0.155.5
+%global xsver 1
 %global xsrel %{xsver}%{?xscount}%{?xshash}
-%global package_srccommit 1.10.2_223.0.183.0
+%global package_srccommit 1.10.3_232.0.155.5
 %define vendor_name Broadcom
 %define vendor_label broadcom
 %define driver_name bnxt-en
@@ -20,10 +20,10 @@
 
 Summary: %{vendor_name} %{driver_name} device drivers
 Name: %{vendor_label}-%{driver_name}
-Version: 1.10.2_223.0.183.0
+Version: 1.10.3_232.0.155.5
 Release: %{?xsrel}%{?dist}
 License: GPL
-Source0: broadcom-bnxt-en-1.10.2_223.0.183.0.tar.gz
+Source0: broadcom-bnxt-en-1.10.3_232.0.155.5.tar.gz
 Patch0: Fix-GSO-type-for-HW-GRO-packets-on-5750X-chips.patch
 
 BuildRequires: gcc
@@ -70,6 +70,9 @@ find %{buildroot}/lib/modules/%{kernel_version} -name "*.ko" -type f | xargs chm
 %{?_cov_results_package}
 
 %changelog
+* Mon May 12 2025 Deli Zhang <deli.zhang@cloud.com> - 1.10.3_232.0.155.5-1
+- CP-307961: Update broadcom-bnxt-en driver to version 1.10.3_232.0.155.5
+
 * Fri Dec 06 2024 Alex Brett <alex.brett@cloud.com> - 1.10.2_223.0.183.0-2
 - CA-401596: Backport patch to fix GSO type for HW GRO packets on 5750X chips
 
