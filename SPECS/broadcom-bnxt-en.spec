@@ -1,8 +1,8 @@
-%global package_speccommit 725c6b5ed804e46a4df8913102d63c611647030b
-%global usver 1.10.3_232.0.155.5
-%global xsver 1
+%global package_speccommit f6e13690527d7fdd07e88175cba86a974c2508db
+%global usver 1.10.3_237.1.20.0
+%global xsver 8.1
 %global xsrel %{xsver}%{?xscount}%{?xshash}
-%global package_srccommit 1.10.3_232.0.155.5
+%global package_srccommit 1.10.3_237.1.20.0
 %define vendor_name Broadcom
 %define vendor_label broadcom
 %define driver_name bnxt-en
@@ -20,11 +20,10 @@
 
 Summary: %{vendor_name} %{driver_name} device drivers
 Name: %{vendor_label}-%{driver_name}
-Version: 1.10.3_232.0.155.5
+Version: 1.10.3_237.1.20.0
 Release: %{?xsrel}%{?dist}
 License: GPL
-Source0: broadcom-bnxt-en-1.10.3_232.0.155.5.tar.gz
-Patch0: Fix-GSO-type-for-HW-GRO-packets-on-5750X-chips.patch
+Source0: broadcom-bnxt-en-1.10.3_237.1.20.0.tar.gz
 
 BuildRequires: gcc
 BuildRequires: kernel-devel
@@ -70,6 +69,9 @@ find %{buildroot}/lib/modules/%{kernel_version} -name "*.ko" -type f | xargs chm
 %{?_cov_results_package}
 
 %changelog
+* Tue Jan 06 2026 Stephen Cheng <stephen.cheng@citrix.com> - 1.10.3_237.1.20.0-8.1
+- CP-310942: (XS8) Build bnxt_en driver 1.10.3_237.1.20.0
+
 * Mon May 12 2025 Deli Zhang <deli.zhang@cloud.com> - 1.10.3_232.0.155.5-1
 - CP-307961: Update broadcom-bnxt-en driver to version 1.10.3_232.0.155.5
 
