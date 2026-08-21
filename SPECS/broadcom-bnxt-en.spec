@@ -21,7 +21,10 @@
 Summary: %{vendor_name} %{driver_name} device drivers
 Name: %{vendor_label}-%{driver_name}
 Version: 1.10.3_237.1.20.0
-Release: %{?xsrel}%{?dist}
+Release: %{?xsrel}.1%{?dist}
+# Built against new kABI after cip rebase
+Requires: xcpng-kernel-kabi = 4.19.325-cip134+
+
 License: GPL
 Source0: broadcom-bnxt-en-1.10.3_237.1.20.0.tar.gz
 
@@ -69,6 +72,9 @@ find %{buildroot}/lib/modules/%{kernel_version} -name "*.ko" -type f | xargs chm
 %{?_cov_results_package}
 
 %changelog
+* Mon Aug 31 2026 Quentin Casasnovas <quentin.casasnovas@vates.tech> - 1.10.3_237.1.20.0-8.1.1
+- Rebuild for kernel v4.19.325-cip134
+
 * Tue Jan 06 2026 Stephen Cheng <stephen.cheng@citrix.com> - 1.10.3_237.1.20.0-8.1
 - CP-310942: (XS8) Build bnxt_en driver 1.10.3_237.1.20.0
 
